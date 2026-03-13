@@ -26,9 +26,9 @@
 
 - [x] **REG-01**: Quick reference covers GDPR key provisions (lawful basis, data subject rights, breach notification, DPO, international transfers)
 - [x] **REG-02**: Quick reference covers CCPA/CPRA key provisions (consumer rights, opt-out, service provider requirements, timelines)
-- [ ] **REG-03**: Quick reference covers COPPA key provisions (parental consent, operator obligations, safe harbor)
-- [ ] **REG-04**: Quick reference covers HIPAA privacy provisions (covered entities, PHI, minimum necessary, BAAs)
-- [ ] **REG-05**: Quick reference covers FERPA key provisions (education records, directory information, consent)
+- [x] **REG-03**: Quick reference covers COPPA key provisions (parental consent, operator obligations, safe harbor)
+- [x] **REG-04**: Quick reference covers HIPAA privacy provisions (covered entities, PHI, minimum necessary, BAAs)
+- [x] **REG-05**: Quick reference covers FERPA key provisions (education records, directory information, consent)
 - [x] **REG-06**: Quick reference covers EU AI Act key provisions (risk tiers, prohibited practices, timeline)
 - [ ] **REG-07**: Regulation cross-reference enables side-by-side comparison of major frameworks on common dimensions (consent, rights, enforcement, penalties)
 - [ ] **REG-08**: Regulatory timeline tracks key effective dates, comment periods, and enforcement deadlines for major laws
@@ -93,9 +93,9 @@
 | ORG-06 | Phase 3 | Pending |
 | REG-01 | Phase 2 | Complete |
 | REG-02 | Phase 2 | Complete |
-| REG-03 | Phase 2 | Pending |
-| REG-04 | Phase 2 | Pending |
-| REG-05 | Phase 2 | Pending |
+| REG-03 | Phase 2 | Complete |
+| REG-04 | Phase 2 | Complete |
+| REG-05 | Phase 2 | Complete |
 | REG-06 | Phase 2 | Complete |
 | REG-07 | Phase 2 | Pending |
 | REG-08 | Phase 2 | Pending |
