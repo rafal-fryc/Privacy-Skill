@@ -6,7 +6,7 @@
 <domain>
 ## Phase Boundary
 
-Create static quick-reference files for 6 major privacy regulations (GDPR, CCPA/CPRA, COPPA, HIPAA, FERPA, EU AI Act) plus cross-reference comparison and regulatory timeline capabilities. Privacy professionals can get instant, accurate answers to common regulation questions from built-in static knowledge without triggering web fetching. Update SKILL.md routing to auto-detect regulation queries and load the appropriate reference files.
+Create static quick-reference files for 6 major privacy regulations (GDPR, CCPA/CPRA, COPPA, HIPAA, FERPA, EU AI Act) plus cross-reference comparison and regulatory timeline capabilities. These files serve as a **knowledge foundation layer** — not a replacement for web fetching, but a baseline that enables instant answers to common questions AND makes web-augmented research (Phase 4) faster, smarter, and more targeted. The static knowledge gives the skill context to ask better questions when fetching and to validate web-fetched information against known provisions. Update SKILL.md routing to auto-detect regulation queries and load the appropriate reference files.
 
 </domain>
 
