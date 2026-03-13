@@ -29,7 +29,7 @@
 - [ ] **REG-03**: Quick reference covers COPPA key provisions (parental consent, operator obligations, safe harbor)
 - [ ] **REG-04**: Quick reference covers HIPAA privacy provisions (covered entities, PHI, minimum necessary, BAAs)
 - [ ] **REG-05**: Quick reference covers FERPA key provisions (education records, directory information, consent)
-- [ ] **REG-06**: Quick reference covers EU AI Act key provisions (risk tiers, prohibited practices, timeline)
+- [x] **REG-06**: Quick reference covers EU AI Act key provisions (risk tiers, prohibited practices, timeline)
 - [ ] **REG-07**: Regulation cross-reference enables side-by-side comparison of major frameworks on common dimensions (consent, rights, enforcement, penalties)
 - [ ] **REG-08**: Regulatory timeline tracks key effective dates, comment periods, and enforcement deadlines for major laws
 
@@ -96,7 +96,7 @@
 | REG-03 | Phase 2 | Pending |
 | REG-04 | Phase 2 | Pending |
 | REG-05 | Phase 2 | Pending |
-| REG-06 | Phase 2 | Pending |
+| REG-06 | Phase 2 | Complete |
 | REG-07 | Phase 2 | Pending |
 | REG-08 | Phase 2 | Pending |
 | ARCH-01 | Phase 1 | Complete |
