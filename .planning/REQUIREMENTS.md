@@ -7,7 +7,7 @@
 
 ### FPF Primary Source
 
-- [ ] **FPF-01**: Skill indexes all 6 FPF publication types (Reports, White Papers, Filings, Infographics, Events, Videos) with counts and descriptions
+- [ ] **FPF-01**: Skill indexes all 6 FPF publication types (Reports, White Papers, Filings, Infographics, Blog Posts, Videos) with counts and descriptions
 - [ ] **FPF-02**: Skill indexes 20+ FPF issue areas (U.S. Legislation, Global, AI, Youth Privacy, Health, etc.) with resource counts
 - [ ] **FPF-03**: FPF navigation guide contains actual fpf.org URL patterns, content taxonomy, and tested search strategies
 - [ ] **FPF-04**: FPF is cited first when the query topic falls within FPF's coverage areas
@@ -117,4 +117,4 @@
 
 ---
 *Requirements defined: 2026-03-12*
-*Last updated: 2026-03-12 after roadmap creation*
+*Last updated: 2026-03-13 — FPF-01 corrected: "Events" replaced with "Blog Posts" per CONTEXT.md locked decision*
