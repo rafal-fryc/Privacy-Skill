@@ -32,6 +32,22 @@ Cross-cutting reference files (loaded for comparison or timeline queries):
 - [reg-cross-reference.md](reg-cross-reference.md) -- dimension-based comparison tables across all 6 regulations. Loaded for comparison queries only.
 - [reg-timeline.md](reg-timeline.md) -- regulatory milestones, effective dates, U.S. state law dates. Loaded for timeline/date queries only.
 
+Organization reference files (loaded for organization-related queries):
+
+- [advocacy-orgs.md](advocacy-orgs.md) -- Privacy advocacy organization catalog (IAPP, EPIC, CDT, EFF, and others)
+- [gov-regulators.md](gov-regulators.md) -- Government regulator profiles (FTC, EDPB, ICO, CPPA, CNIL, state AGs)
+- [academic-centers.md](academic-centers.md) -- Academic privacy centers and think tanks (Georgetown, Berkman Klein, Stanford HAI, Brookings)
+
+Navigation guides (loaded for site-specific navigation queries):
+
+- [iapp-nav.md](iapp-nav.md) -- IAPP site navigation
+- [epic-nav.md](epic-nav.md) -- EPIC site navigation
+- [cppa-nav.md](cppa-nav.md) -- CPPA site navigation
+- [cdt-nav.md](cdt-nav.md) -- CDT site navigation
+- [ftc-nav.md](ftc-nav.md) -- FTC site navigation
+- [edpb-nav.md](edpb-nav.md) -- EDPB site navigation
+- [ico-nav.md](ico-nav.md) -- ICO site navigation
+
 ---
 
 ## Query Routing
@@ -85,7 +101,28 @@ Assess whether the query involves a specific privacy regulation. If so, load the
 
 **Integration with FPF routing:** A regulation query loads BOTH the regulation file AND fpf-reference.md when FPF relevance is detected in Step 2. For example, a GDPR query loads gdpr-reference.md (regulation knowledge) + fpf-reference.md (FPF covers Global Data Protection). The existing bias-to-load heuristic for FPF still applies.
 
-### Step 4: Compose Response
+### Step 4: Determine Organization Relevance (CONDITIONAL)
+
+Assess whether the query involves a privacy organization, government regulator, or academic center. This step uses intent detection rather than keyword matching -- look at what the user is asking for, not just which words appear.
+
+**Organization routing triggers:**
+
+| Query Intent | Load Files | Examples |
+|---|---|---|
+| Org name mention + navigation need | Relevant nav guide + catalog file | "Where can I find IAPP's enforcement tracker?" |
+| "Where can I find..." + privacy resource | Relevant catalog file(s) + matching nav guides | "Where can I find enforcement action data?" |
+| Enforcement/regulator question | gov-regulators.md + relevant nav guide(s) | "Who enforces GDPR?", "What powers does the FTC have?" |
+| Organization comparison or overview | Relevant catalog file(s) | "What organizations work on children's privacy?" |
+| Academic/research institution query | academic-centers.md | "What privacy research does Georgetown do?" |
+
+**File loading rules:**
+- When a specific org is named and has a nav guide, load both the nav guide and the parent catalog file.
+- When the query is broad ("privacy organizations"), load all relevant catalog files.
+- Gov-regulators.md is loaded for any enforcement, regulator, or jurisdiction question.
+- Academic-centers.md is loaded for research institution, think tank, or academic privacy queries.
+- This step runs independently of Steps 2 and 3 -- all routing decisions are additive.
+
+### Step 5: Compose Response
 
 Using the formatting and attribution rules from skill-behaviors.md, compose your response:
 
@@ -207,13 +244,31 @@ These examples illustrate the routing logic for different query types.
 
 **Routing:** Load skill-behaviors.md (always) + coppa-reference.md (primary: children's online privacy) + ferpa-reference.md (education/student privacy) + ccpa-reference.md (minor provisions under 16) + fpf-reference.md (FPF covers Youth and Education Privacy extensively).
 
+### 12. Organization Navigation Query
+
+**Query:** "Where can I find IAPP's enforcement tracker?"
+
+**Routing:** Load skill-behaviors.md (always) + iapp-nav.md (specific org named + navigation need) + advocacy-orgs.md (IAPP's parent catalog) + fpf-reference.md (FPF covers enforcement-adjacent topics).
+
+### 13. Government Regulator Enforcement Query
+
+**Query:** "What enforcement powers does the FTC have over privacy?"
+
+**Routing:** Load skill-behaviors.md (always) + gov-regulators.md (enforcement/regulator question) + ftc-nav.md (specific regulator named) + fpf-reference.md (FPF covers regulatory enforcement topics).
+
+### 14. Academic Research Query
+
+**Query:** "What privacy think tanks publish research on AI governance?"
+
+**Routing:** Load skill-behaviors.md (always) + academic-centers.md (academic/research institution query about think tanks) + fpf-reference.md (FPF covers AI governance extensively).
+
 ---
 
 ## Version and Metadata
 
-- **Skill version:** 0.2.0
+- **Skill version:** 0.3.0
 - **Last updated:** 2026-03-13
-- **Phase:** Phase 2 (Regulation Knowledge Base) added 6 regulation reference files, cross-reference comparison, regulatory timeline, and regulation query routing. Future phases will add expanded organization catalog and multi-source deep research capabilities.
+- **Phase:** Phase 3 (Organization Catalog + Government Sources) added org catalogs (advocacy-orgs.md, gov-regulators.md, academic-centers.md), 7 navigation guides (IAPP, EPIC, CPPA, CDT, FTC, EDPB, ICO), and organization query routing (Step 4). Future phases will add multi-source deep research capabilities.
 
 ---
 
