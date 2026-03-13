@@ -29,12 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Every answer includes a legal disclaimer stating the skill assists research, not legal advice
   4. The skill can answer questions about FPF publication types, issue areas, and major programs from its built-in knowledge without web fetching
   5. SKILL.md stays under 500 lines and dispatches to reference files that load on demand
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md — Create reference files (skill-behaviors.md + fpf-reference.md)
+- [ ] 01-02-PLAN.md — Create SKILL.md routing layer + verify complete skill
 
 ### Phase 2: Regulation Knowledge Base
 **Goal**: Privacy professionals can get instant, accurate answers to common regulation questions without any web fetching
@@ -87,7 +86,7 @@ Note: Phase 2 and Phase 3 have no dependency on each other and could theoretical
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Skill Foundation + FPF Primary Source | 0/3 | Not started | - |
+| 1. Skill Foundation + FPF Primary Source | 0/2 | Planning complete | - |
 | 2. Regulation Knowledge Base | 0/2 | Not started | - |
 | 3. Organization Catalog + Government Sources | 0/2 | Not started | - |
 | 4. Deep Research + Validation | 0/1 | Not started | - |
