@@ -13,11 +13,24 @@ This file is the routing layer for the `/privacy` skill. It does not contain sub
 
 ## Reference Files
 
-Two reference files provide the knowledge and behavior rules for this skill:
+Core files (loaded via routing logic below):
 
-- **Response rules and formatting:** [skill-behaviors.md](skill-behaviors.md) contains attribution instructions, source prioritization rules, the mandatory legal disclaimer, anti-hallucination guidance, professional tone calibration, and out-of-scope handling. This file governs HOW you respond.
+- **Response rules and formatting:** [skill-behaviors.md](skill-behaviors.md) -- attribution, disclaimers, anti-hallucination, tone. Governs HOW you respond. Loaded on every query.
+- **FPF knowledge base:** [fpf-reference.md](fpf-reference.md) -- FPF issue areas, tools, programs, navigation. Provides WHAT you know about FPF. Loaded when FPF-relevant.
 
-- **FPF knowledge base:** [fpf-reference.md](fpf-reference.md) contains FPF's organizational overview, all 20+ issue areas with descriptions and browse URLs, 6 publication types, specialized tools (Key Dates Tracker, Student Privacy Compass, PETs Repository, etc.), major programs (Center for AI, Youth Privacy), and fpf.org navigation strategies. This file provides WHAT you know about FPF.
+Regulation reference files (loaded for regulation-specific queries):
+
+- [gdpr-reference.md](gdpr-reference.md) -- GDPR provisions, rights, enforcement, compliance essentials
+- [ccpa-reference.md](ccpa-reference.md) -- CCPA/CPRA provisions, consumer rights, enforcement
+- [coppa-reference.md](coppa-reference.md) -- COPPA Rule, parental consent, 2025 amendments
+- [hipaa-reference.md](hipaa-reference.md) -- HIPAA Privacy Rule, PHI, covered entities
+- [ferpa-reference.md](ferpa-reference.md) -- FERPA education records, consent exceptions
+- [eu-ai-act-reference.md](eu-ai-act-reference.md) -- EU AI Act privacy lens, prohibited practices, high-risk AI
+
+Cross-cutting reference files (loaded for comparison or timeline queries):
+
+- [reg-cross-reference.md](reg-cross-reference.md) -- dimension-based comparison tables across all 6 regulations. Loaded for comparison queries only.
+- [reg-timeline.md](reg-timeline.md) -- regulatory milestones, effective dates, U.S. state law dates. Loaded for timeline/date queries only.
 
 ---
 
@@ -47,7 +60,32 @@ Assess whether the query topic overlaps with any of FPF's coverage areas. FPF co
 
 **Heuristic:** When in doubt about whether FPF covers the topic, load fpf-reference.md. The cost of loading it unnecessarily is small (extra context). The cost of missing relevant FPF coverage is high (incomplete answer that omits the primary source). Err on the side of loading.
 
-### Step 3: Compose Response
+### Step 3: Determine Regulation Relevance (CONDITIONAL)
+
+Assess whether the query involves a specific privacy regulation. If so, load the corresponding regulation reference file(s). This step runs independently of Step 2 -- both routing decisions apply simultaneously.
+
+**Regulation detection:** If the query matches keywords for a regulation, load that file.
+
+| Regulation | Load File | Keywords |
+|------------|-----------|----------|
+| GDPR | gdpr-reference.md | GDPR, General Data Protection, EU data protection, data subject rights, lawful basis, DPO, adequacy, SCC |
+| CCPA/CPRA | ccpa-reference.md | CCPA, CPRA, California privacy, California Consumer Privacy Act, opt-out, do not sell, CPPA, CalPrivacy |
+| COPPA | coppa-reference.md | COPPA, children's online privacy, parental consent, child-directed, under 13 |
+| HIPAA | hipaa-reference.md | HIPAA, PHI, protected health information, covered entity, BAA, health privacy |
+| FERPA | ferpa-reference.md | FERPA, education records, student privacy, directory information |
+| EU AI Act | eu-ai-act-reference.md | EU AI Act, AI Act, artificial intelligence act, prohibited AI, high-risk AI, AI risk tiers |
+
+**Comparison queries:** If the query contains comparison language ("compare," "contrast," "differ," "versus," "vs," "side by side," "how does X differ from Y"), also load [reg-cross-reference.md](reg-cross-reference.md).
+
+**Timeline queries:** If the query asks about dates, deadlines, or timelines ("when does," "effective date," "deadline," "timeline," "enforcement date," "compliance date"), also load [reg-timeline.md](reg-timeline.md).
+
+**Multiple regulations:** If the query mentions multiple regulations, load all matching regulation files.
+
+**Broad questions:** For broad questions like "What privacy laws apply to children?" load all potentially relevant regulation files (e.g., coppa-reference.md, ferpa-reference.md, ccpa-reference.md for minor provisions).
+
+**Integration with FPF routing:** A regulation query loads BOTH the regulation file AND fpf-reference.md when FPF relevance is detected in Step 2. For example, a GDPR query loads gdpr-reference.md (regulation knowledge) + fpf-reference.md (FPF covers Global Data Protection). The existing bias-to-load heuristic for FPF still applies.
+
+### Step 4: Compose Response
 
 Using the formatting and attribution rules from skill-behaviors.md, compose your response:
 
@@ -107,7 +145,7 @@ These examples illustrate the routing logic for different query types.
 
 **Query:** "What are the key provisions of COPPA?"
 
-**Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (FPF covers Youth and Education Privacy extensively, including COPPA compliance guidance and the Student Privacy Compass).
+**Routing:** Load skill-behaviors.md (always) + coppa-reference.md (keyword: COPPA) + fpf-reference.md (FPF covers Youth and Education Privacy extensively).
 
 ### 2. FPF-Specific Question
 
@@ -119,7 +157,7 @@ These examples illustrate the routing logic for different query types.
 
 **Query:** "Compare GDPR and CCPA consent requirements"
 
-**Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (FPF covers both Global Data Protection and U.S. Legislation, with cross-jurisdictional comparison resources).
+**Routing:** Load skill-behaviors.md (always) + gdpr-reference.md (keyword: GDPR) + ccpa-reference.md (keyword: CCPA) + reg-cross-reference.md (comparison query: "compare") + fpf-reference.md (FPF covers both Global Data Protection and U.S. Legislation).
 
 ### 4. Technical Privacy Concept
 
@@ -151,13 +189,31 @@ These examples illustrate the routing logic for different query types.
 
 **Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (FPF's Key Dates for State Privacy Laws tracker is directly relevant, listed under the U.S. Legislation issue area).
 
+### 9. Regulation-Specific Lookup
+
+**Query:** "What does HIPAA require for business associates?"
+
+**Routing:** Load skill-behaviors.md (always) + hipaa-reference.md (keyword: HIPAA, business associate) + fpf-reference.md (FPF covers Health Data privacy).
+
+### 10. Regulation Timeline Question
+
+**Query:** "When does the EU AI Act become fully enforceable?"
+
+**Routing:** Load skill-behaviors.md (always) + eu-ai-act-reference.md (keyword: EU AI Act) + reg-timeline.md (timeline query: "when does," "enforceable") + fpf-reference.md (FPF covers AI governance).
+
+### 11. Cross-Regulation Children's Question
+
+**Query:** "What privacy laws protect children online?"
+
+**Routing:** Load skill-behaviors.md (always) + coppa-reference.md (primary: children's online privacy) + ferpa-reference.md (education/student privacy) + ccpa-reference.md (minor provisions under 16) + fpf-reference.md (FPF covers Youth and Education Privacy extensively).
+
 ---
 
 ## Version and Metadata
 
-- **Skill version:** 0.1.0
+- **Skill version:** 0.2.0
 - **Last updated:** 2026-03-13
-- **Phase:** Built in Phase 1 (Skill Foundation + FPF Primary Source). Future phases will add regulation quick-reference files, expanded organization catalog, and multi-source deep research capabilities.
+- **Phase:** Phase 2 (Regulation Knowledge Base) added 6 regulation reference files, cross-reference comparison, regulatory timeline, and regulation query routing. Future phases will add expanded organization catalog and multi-source deep research capabilities.
 
 ---
 
