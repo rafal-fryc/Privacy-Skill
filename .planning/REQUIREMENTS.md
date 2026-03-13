@@ -17,9 +17,9 @@
 
 - [x] **ORG-01**: Skill catalogs 15-20 major privacy organizations with name, focus area, website, and key resource types
 - [x] **ORG-02**: Navigation guides exist for top 8 sources (FPF, IAPP, EPIC, CalPrivacy/CPPA, CDT, FTC, EDPB, ICO) with URL patterns and search strategies
-- [ ] **ORG-03**: Each navigation guide contains site-specific URL patterns, content organization, key sections, and search tips
+- [x] **ORG-03**: Each navigation guide contains site-specific URL patterns, content organization, key sections, and search tips
 - [x] **ORG-04**: Source attribution appears in every answer with organization name and ideally URL
-- [ ] **ORG-05**: Government regulator directory covers FTC, EDPB, ICO, CNIL, state AGs with jurisdiction and powers
+- [x] **ORG-05**: Government regulator directory covers FTC, EDPB, ICO, CNIL, state AGs with jurisdiction and powers
 - [x] **ORG-06**: Think tank and academic center catalog includes Georgetown Privacy Center, Berkman Klein, Stanford HAI, Brookings, and others
 
 ### Knowledge Base
@@ -87,9 +87,9 @@
 | FPF-05 | Phase 1 | Complete |
 | ORG-01 | Phase 3 | Complete |
 | ORG-02 | Phase 3 | Complete |
-| ORG-03 | Phase 3 | Pending |
+| ORG-03 | Phase 3 | Complete |
 | ORG-04 | Phase 1 | Complete |
-| ORG-05 | Phase 3 | Pending |
+| ORG-05 | Phase 3 | Complete |
 | ORG-06 | Phase 3 | Complete |
 | REG-01 | Phase 2 | Complete |
 | REG-02 | Phase 2 | Complete |
@@ -117,4 +117,4 @@
 
 ---
 *Requirements defined: 2026-03-12*
-*Last updated: 2026-03-13 — FPF-01 corrected: "Events" replaced with "Blog Posts" per CONTEXT.md locked decision*
+*Last updated: 2026-03-13 — All v1 requirements complete. ORG-03/ORG-05 marked complete (Phase 3 verification confirmed satisfaction).*
