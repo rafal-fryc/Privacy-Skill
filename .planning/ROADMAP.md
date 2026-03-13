@@ -61,11 +61,13 @@ Plans:
   2. Navigation guides exist for at least 8 major sources (FPF, IAPP, EPIC, CPPA, CDT, FTC, EDPB, ICO) with tested URL patterns and content organization
   3. User asking about a government regulator (e.g., "What enforcement powers does the FTC have over privacy?") gets a response covering jurisdiction, powers, and key enforcement areas
   4. User asking "What privacy think tanks publish research on AI governance?" gets a response listing relevant academic centers and think tanks with their focus areas
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md — Create advocacy organization catalog + IAPP navigation guide
+- [ ] 03-02-PLAN.md — Create government regulator catalog + CPPA and FTC navigation guides
+- [ ] 03-03-PLAN.md — Create EDPB, ICO, EPIC, and CDT navigation guides
+- [ ] 03-04-PLAN.md — Create academic centers catalog + update SKILL.md organization routing
 
 ### Phase 4: Deep Research + Validation
 **Goal**: Privacy professionals can conduct multi-source deep research queries that synthesize live information across organizations, with reliable fallback when web access fails
@@ -90,5 +92,5 @@ Note: Phase 2 and Phase 3 have no dependency on each other and could theoretical
 |-------|----------------|--------|-----------|
 | 1. Skill Foundation + FPF Primary Source | 0/2 | Planning complete | - |
 | 2. Regulation Knowledge Base | 0/4 | Planning complete | - |
-| 3. Organization Catalog + Government Sources | 0/2 | Not started | - |
+| 3. Organization Catalog + Government Sources | 0/4 | Planning complete | - |
 | 4. Deep Research + Validation | 0/1 | Not started | - |
