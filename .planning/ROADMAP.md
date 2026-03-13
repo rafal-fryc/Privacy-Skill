@@ -44,11 +44,13 @@ Plans:
   2. User can ask for a comparison between two regulations (e.g., GDPR vs CCPA on consent) and receive a structured side-by-side response
   3. User asking about regulatory deadlines or effective dates gets accurate timeline information with date-stamps indicating when the data was last verified
   4. All six major regulations (GDPR, CCPA/CPRA, COPPA, HIPAA, FERPA, EU AI Act) have quick-reference coverage with key provisions
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md — Create GDPR and CCPA/CPRA quick-reference files
+- [ ] 02-02-PLAN.md — Create COPPA, HIPAA, and FERPA quick-reference files
+- [ ] 02-03-PLAN.md — Create EU AI Act quick-reference file (privacy lens)
+- [ ] 02-04-PLAN.md — Create cross-reference, timeline, and update SKILL.md routing
 
 ### Phase 3: Organization Catalog + Government Sources
 **Goal**: Privacy professionals can discover and navigate the full ecosystem of privacy organizations, government regulators, and academic centers through source-aware guidance
@@ -87,6 +89,6 @@ Note: Phase 2 and Phase 3 have no dependency on each other and could theoretical
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Skill Foundation + FPF Primary Source | 0/2 | Planning complete | - |
-| 2. Regulation Knowledge Base | 0/2 | Not started | - |
+| 2. Regulation Knowledge Base | 0/4 | Planning complete | - |
 | 3. Organization Catalog + Government Sources | 0/2 | Not started | - |
 | 4. Deep Research + Validation | 0/1 | Not started | - |
