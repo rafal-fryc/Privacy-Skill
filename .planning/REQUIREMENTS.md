@@ -24,8 +24,8 @@
 
 ### Knowledge Base
 
-- [ ] **REG-01**: Quick reference covers GDPR key provisions (lawful basis, data subject rights, breach notification, DPO, international transfers)
-- [ ] **REG-02**: Quick reference covers CCPA/CPRA key provisions (consumer rights, opt-out, service provider requirements, timelines)
+- [x] **REG-01**: Quick reference covers GDPR key provisions (lawful basis, data subject rights, breach notification, DPO, international transfers)
+- [x] **REG-02**: Quick reference covers CCPA/CPRA key provisions (consumer rights, opt-out, service provider requirements, timelines)
 - [ ] **REG-03**: Quick reference covers COPPA key provisions (parental consent, operator obligations, safe harbor)
 - [ ] **REG-04**: Quick reference covers HIPAA privacy provisions (covered entities, PHI, minimum necessary, BAAs)
 - [ ] **REG-05**: Quick reference covers FERPA key provisions (education records, directory information, consent)
@@ -91,8 +91,8 @@
 | ORG-04 | Phase 1 | Complete |
 | ORG-05 | Phase 3 | Pending |
 | ORG-06 | Phase 3 | Pending |
-| REG-01 | Phase 2 | Pending |
-| REG-02 | Phase 2 | Pending |
+| REG-01 | Phase 2 | Complete |
+| REG-02 | Phase 2 | Complete |
 | REG-03 | Phase 2 | Pending |
 | REG-04 | Phase 2 | Pending |
 | REG-05 | Phase 2 | Pending |

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-03-PLAN.md
-last_updated: "2026-03-13T17:52:07.245Z"
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-03-13T17:53:36.584Z"
 last_activity: 2026-03-13 -- Plan 02-03 executed (EU AI Act privacy lens reference created)
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 6
-  completed_plans: 3
+  completed_plans: 4
   percent: 50
 ---
 
@@ -52,6 +52,7 @@ Progress: [█████░░░░░] 50%
 
 *Updated after each plan completion*
 | Phase 02 P03 | 3min | 1 tasks | 1 files |
+| Phase 02 P01 | 5min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - Privacy lens editorial approach for AI Act: include data governance, biometrics, GDPR interplay; exclude product safety, sandbox, GPAI evaluation unless touching personal data (02-03)
 - GDPR parallel obligations table for AI Act dual-compliance mapping (02-03)
 - Practitioner blockquote notes pattern for editorial guidance within reference files (02-03)
+- [Phase 02]: Regulation files include scope/applicability section before key provisions for practitioner context (02-01)
+- [Phase 02]: GPC compliance details expanded with 5 specific requirements since GPC enforcement is a CPPA 2026 priority (02-01)
+- [Phase 02]: International transfers treated as standalone section in GDPR given practitioner importance of cross-border data flows (02-01)
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-13T17:52:07.241Z
-Stopped at: Completed 02-03-PLAN.md
+Last session: 2026-03-13T17:53:36.580Z
+Stopped at: Completed 02-01-PLAN.md
 Resume file: None
