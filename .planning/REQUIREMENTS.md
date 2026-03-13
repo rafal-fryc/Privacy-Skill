@@ -38,8 +38,8 @@
 - [x] **ARCH-01**: Skill triggers via `/privacy` command with natural language queries
 - [x] **ARCH-02**: SKILL.md acts as routing layer under 500 lines, dispatching to reference files
 - [x] **ARCH-03**: Reference files use progressive disclosure (loaded on-demand, zero tokens at rest)
-- [ ] **ARCH-04**: Hybrid architecture: static knowledge for quick lookups, live WebFetch for deeper research
-- [ ] **ARCH-05**: Graceful degradation when web access is unavailable (falls back to static knowledge)
+- [x] **ARCH-04**: Hybrid architecture: static knowledge for quick lookups, live WebFetch for deeper research
+- [x] **ARCH-05**: Graceful degradation when web access is unavailable (falls back to static knowledge)
 - [x] **ARCH-06**: Professional-grade language assumes domain knowledge, uses precise legal/regulatory terminology
 - [x] **ARCH-07**: Anti-hallucination instructions embedded; regulatory facts come from reference files, not training data
 - [x] **ARCH-08**: Legal disclaimer in every output pathway stating skill assists research, not legal advice
@@ -47,7 +47,7 @@
 ### Research Depth
 
 - [x] **DEPTH-01**: Quick lookup mode answers common factual questions from static knowledge only
-- [ ] **DEPTH-02**: Deep research mode performs multi-source live fetching using navigation guides and synthesizes across organizations
+- [x] **DEPTH-02**: Deep research mode performs multi-source live fetching using navigation guides and synthesizes across organizations
 
 ## v2 Requirements
 
@@ -102,13 +102,13 @@
 | ARCH-01 | Phase 1 | Complete |
 | ARCH-02 | Phase 1 | Complete |
 | ARCH-03 | Phase 1 | Complete |
-| ARCH-04 | Phase 4 | Pending |
-| ARCH-05 | Phase 4 | Pending |
+| ARCH-04 | Phase 4 | Complete |
+| ARCH-05 | Phase 4 | Complete |
 | ARCH-06 | Phase 1 | Complete |
 | ARCH-07 | Phase 1 | Complete |
 | ARCH-08 | Phase 1 | Complete |
 | DEPTH-01 | Phase 2 | Complete |
-| DEPTH-02 | Phase 4 | Pending |
+| DEPTH-02 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 29 total
