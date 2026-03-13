@@ -16,6 +16,7 @@ This file is the routing layer for the `/privacy` skill. It does not contain sub
 Core files (loaded via routing logic below):
 
 - **Response rules and formatting:** [skill-behaviors.md](skill-behaviors.md) -- attribution, disclaimers, anti-hallucination, tone. Governs HOW you respond. Loaded on every query.
+- **Live research instructions:** [research-behaviors.md](research-behaviors.md) -- source selection, WebFetch execution, content integration, degradation handling. Governs HOW live research is conducted. Loaded on every query.
 - **FPF knowledge base:** [fpf-reference.md](fpf-reference.md) -- FPF issue areas, tools, programs, navigation. Provides WHAT you know about FPF. Loaded when FPF-relevant.
 
 Regulation reference files (loaded for regulation-specific queries):
@@ -122,7 +123,23 @@ Assess whether the query involves a privacy organization, government regulator, 
 - Academic-centers.md is loaded for research institution, think tank, or academic privacy queries.
 - This step runs independently of Steps 2 and 3 -- all routing decisions are additive.
 
-### Step 5: Compose Response
+### Step 5: Live Research (ALWAYS -- every query)
+
+Load [research-behaviors.md](research-behaviors.md) and follow its instructions to augment your static knowledge with live web content.
+
+This step runs for every query. Static knowledge from reference files (loaded in Steps 2-4) is always the foundation. Live-fetched content adds current developments, recent publications, and updated enforcement data on top.
+
+**Execution:**
+
+1. Read research-behaviors.md for source selection rules and the WebFetch compatibility matrix
+2. From the sources matched in Steps 2-4, select up to 3-4 relevant sources that are WebFetch-accessible
+3. Construct targeted content URLs using the loaded nav guide URL patterns (never fetch homepages)
+4. Fetch each selected source using WebFetch with a focused, query-specific prompt
+5. Note any sources that fail or are unavailable for degradation handling
+
+After completing live research, proceed to Step 6 with both static reference knowledge and live-fetched content available.
+
+### Step 6: Compose Response
 
 Using the formatting and attribution rules from skill-behaviors.md, compose your response:
 
@@ -262,13 +279,25 @@ These examples illustrate the routing logic for different query types.
 
 **Routing:** Load skill-behaviors.md (always) + academic-centers.md (academic/research institution query about think tanks) + fpf-reference.md (FPF covers AI governance extensively).
 
+### 15. Deep Research with Live Fetching
+
+**Query:** "What is the current state of children's privacy law?"
+
+**Routing:** Load skill-behaviors.md (always) + coppa-reference.md + ferpa-reference.md + ccpa-reference.md (children's privacy regulations) + fpf-reference.md (FPF Youth and Education Privacy) + research-behaviors.md (always). Live research fetches FPF blog for recent analysis, CPPA for CCPA minor provisions updates, and ICO for children's code guidance. Response synthesizes static regulation knowledge with live-fetched current developments.
+
+### 16. Research with Partial Degradation
+
+**Query:** "How are US regulators enforcing privacy laws?"
+
+**Routing:** Load skill-behaviors.md (always) + gov-regulators.md + ftc-nav.md + cppa-nav.md + fpf-reference.md + research-behaviors.md (always). Live research fetches CPPA (accessible) and IAPP for enforcement coverage. FTC is WebFetch-blocked (403) -- response notes FTC coverage is based on built-in knowledge. Theme-based synthesis weaves enforcement trends across regulators.
+
 ---
 
 ## Version and Metadata
 
-- **Skill version:** 0.3.0
+- **Skill version:** 0.4.0
 - **Last updated:** 2026-03-13
-- **Phase:** Phase 3 (Organization Catalog + Government Sources) added org catalogs (advocacy-orgs.md, gov-regulators.md, academic-centers.md), 7 navigation guides (IAPP, EPIC, CPPA, CDT, FTC, EDPB, ICO), and organization query routing (Step 4). Future phases will add multi-source deep research capabilities.
+- **Phase:** Phase 4 (Deep Research + Validation) added research-behaviors.md for live WebFetch research, Step 5 (Live Research) in routing pipeline, and graceful degradation for source unavailability. Skill now implements full hybrid architecture: static knowledge foundation + live web research.
 
 ---
 
