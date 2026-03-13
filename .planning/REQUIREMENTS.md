@@ -35,9 +35,9 @@
 
 ### Skill Architecture
 
-- [ ] **ARCH-01**: Skill triggers via `/privacy` command with natural language queries
-- [ ] **ARCH-02**: SKILL.md acts as routing layer under 500 lines, dispatching to reference files
-- [ ] **ARCH-03**: Reference files use progressive disclosure (loaded on-demand, zero tokens at rest)
+- [x] **ARCH-01**: Skill triggers via `/privacy` command with natural language queries
+- [x] **ARCH-02**: SKILL.md acts as routing layer under 500 lines, dispatching to reference files
+- [x] **ARCH-03**: Reference files use progressive disclosure (loaded on-demand, zero tokens at rest)
 - [ ] **ARCH-04**: Hybrid architecture: static knowledge for quick lookups, live WebFetch for deeper research
 - [ ] **ARCH-05**: Graceful degradation when web access is unavailable (falls back to static knowledge)
 - [x] **ARCH-06**: Professional-grade language assumes domain knowledge, uses precise legal/regulatory terminology
@@ -99,9 +99,9 @@
 | REG-06 | Phase 2 | Pending |
 | REG-07 | Phase 2 | Pending |
 | REG-08 | Phase 2 | Pending |
-| ARCH-01 | Phase 1 | Pending |
-| ARCH-02 | Phase 1 | Pending |
-| ARCH-03 | Phase 1 | Pending |
+| ARCH-01 | Phase 1 | Complete |
+| ARCH-02 | Phase 1 | Complete |
+| ARCH-03 | Phase 1 | Complete |
 | ARCH-04 | Phase 4 | Pending |
 | ARCH-05 | Phase 4 | Pending |
 | ARCH-06 | Phase 1 | Complete |
