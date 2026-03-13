@@ -15,12 +15,12 @@
 
 ### Organization Catalog
 
-- [ ] **ORG-01**: Skill catalogs 15-20 major privacy organizations with name, focus area, website, and key resource types
-- [ ] **ORG-02**: Navigation guides exist for top 8 sources (FPF, IAPP, EPIC, CalPrivacy/CPPA, CDT, FTC, EDPB, ICO) with URL patterns and search strategies
+- [x] **ORG-01**: Skill catalogs 15-20 major privacy organizations with name, focus area, website, and key resource types
+- [x] **ORG-02**: Navigation guides exist for top 8 sources (FPF, IAPP, EPIC, CalPrivacy/CPPA, CDT, FTC, EDPB, ICO) with URL patterns and search strategies
 - [ ] **ORG-03**: Each navigation guide contains site-specific URL patterns, content organization, key sections, and search tips
 - [x] **ORG-04**: Source attribution appears in every answer with organization name and ideally URL
 - [ ] **ORG-05**: Government regulator directory covers FTC, EDPB, ICO, CNIL, state AGs with jurisdiction and powers
-- [ ] **ORG-06**: Think tank and academic center catalog includes Georgetown Privacy Center, Berkman Klein, Stanford HAI, Brookings, and others
+- [x] **ORG-06**: Think tank and academic center catalog includes Georgetown Privacy Center, Berkman Klein, Stanford HAI, Brookings, and others
 
 ### Knowledge Base
 
@@ -85,12 +85,12 @@
 | FPF-03 | Phase 1 | Complete |
 | FPF-04 | Phase 1 | Complete |
 | FPF-05 | Phase 1 | Complete |
-| ORG-01 | Phase 3 | Pending |
-| ORG-02 | Phase 3 | Pending |
+| ORG-01 | Phase 3 | Complete |
+| ORG-02 | Phase 3 | Complete |
 | ORG-03 | Phase 3 | Pending |
 | ORG-04 | Phase 1 | Complete |
 | ORG-05 | Phase 3 | Pending |
-| ORG-06 | Phase 3 | Pending |
+| ORG-06 | Phase 3 | Complete |
 | REG-01 | Phase 2 | Complete |
 | REG-02 | Phase 2 | Complete |
 | REG-03 | Phase 2 | Complete |

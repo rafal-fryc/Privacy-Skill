@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-13T19:01:02.093Z"
-last_activity: 2026-03-13 -- Plan 02-04 executed (cross-reference, timeline, and SKILL.md routing for regulation queries)
+stopped_at: Completed 03-04-PLAN.md
+last_updated: "2026-03-13T20:15:12.987Z"
+last_activity: 2026-03-13 -- Plan 03-04 executed (academic centers catalog + SKILL.md org routing)
 progress:
   total_phases: 4
-  completed_phases: 2
-  total_plans: 6
-  completed_plans: 6
+  completed_phases: 3
+  total_plans: 10
+  completed_plans: 10
   percent: 100
 ---
 
@@ -21,23 +21,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-12)
 
 **Core value:** When a privacy professional asks a question, the skill knows exactly where to look, how to navigate each source, and prioritizes FPF first.
-**Current focus:** Phase 2 - Regulation Knowledge Base
+**Current focus:** Phase 3 Complete - Organization Catalog + Government Sources
 
 ## Current Position
 
-Phase: 2 of 4 (Regulation Knowledge Base) -- COMPLETE
-Plan: 4 of 4 in current phase (02-04 complete)
-Status: Phase 2 Complete
-Last activity: 2026-03-13 -- Plan 02-04 executed (cross-reference, timeline, and SKILL.md routing for regulation queries)
+Phase: 3 of 4 (Organization Catalog + Government Sources)
+Plan: 4 of 4 in current phase (Phase 3 complete)
+Status: Phase 3 Complete
+Last activity: 2026-03-13 -- Plan 03-04 executed (academic centers catalog + SKILL.md org routing)
 
 Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 5min
-- Total execution time: 26min
+- Total plans completed: 10
+- Average duration: 4min
+- Total execution time: 34min
 
 **By Phase:**
 
@@ -45,9 +45,10 @@ Progress: [██████████] 100%
 |-------|-------|-------|----------|
 | 1 | 2 | 8min | 4min |
 | 2 | 4 | 23min | 6min |
+| 3 | 4 | 3min | 1min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (3min), 02-01 (5min), 02-02 (7min), 02-03 (3min), 02-04 (8min)
+- Last 5 plans: 02-03 (3min), 02-04 (8min), 03-01 (5min), 03-02 (N/A), 03-04 (3min)
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -55,6 +56,8 @@ Progress: [██████████] 100%
 | Phase 02 P01 | 5min | 2 tasks | 2 files |
 | Phase 02 P02 | 7min | 3 tasks | 3 files |
 | Phase 02 P04 | 8min | 3 tasks | 3 files |
+| Phase 03 P01 | 5min | 2 tasks | 2 files |
+| Phase 03 P04 | 3min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -86,6 +89,13 @@ Recent decisions affecting current work:
 - [Phase 02]: Split comparison tables into 3-regulation groups per dimension for readability (02-04)
 - [Phase 02]: Regulation routing (Step 3) runs independently of FPF routing (Step 2); both apply simultaneously (02-04)
 - [Phase 02]: Broad regulation questions load all potentially relevant files rather than requiring exact keyword match (02-04)
+- [Phase 03]: Added NOYB as 9th advocacy org for European GDPR enforcement coverage gap (03-01)
+- [Phase 03]: IAPP enforcement database URL returned 404; documented alternative via resource subject filter (03-01)
+- [Phase 03]: CDT placed in advocacy catalog as primary category with cross-reference note to academic-centers.md (03-01)
+- [Phase 03]: 8 academic centers included at max of 6-8 range for comprehensive privacy landscape coverage (03-04)
+- [Phase 03]: CSET and Georgetown Privacy Center as separate entries (different research missions) (03-04)
+- [Phase 03]: Intent-detection routing for Step 4 org queries instead of keyword matching (03-04)
+- [Phase 03]: SKILL.md at 275 lines (225 headroom) -- better than estimated 320 target (03-04)
 
 ### Pending Todos
 
@@ -94,11 +104,11 @@ None yet.
 ### Blockers/Concerns
 
 - WebFetch compatibility with fpf.org not yet tested (empirical work needed in Phase 1)
-- SKILL.md at 220 lines (500-line limit) -- headroom for future additions
+- SKILL.md at 275 lines (500-line limit) -- 225 lines headroom for Phase 4
 - Legal disclaimer language should ideally be reviewed before shipping
 
 ## Session Continuity
 
-Last session: 2026-03-13T19:01:02.090Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-organization-catalog-government-sources/03-CONTEXT.md
+Last session: 2026-03-13T20:15:12.984Z
+Stopped at: Completed 03-04-PLAN.md
+Resume file: None
