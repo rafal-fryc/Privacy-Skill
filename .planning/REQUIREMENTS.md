@@ -30,8 +30,8 @@
 - [x] **REG-04**: Quick reference covers HIPAA privacy provisions (covered entities, PHI, minimum necessary, BAAs)
 - [x] **REG-05**: Quick reference covers FERPA key provisions (education records, directory information, consent)
 - [x] **REG-06**: Quick reference covers EU AI Act key provisions (risk tiers, prohibited practices, timeline)
-- [ ] **REG-07**: Regulation cross-reference enables side-by-side comparison of major frameworks on common dimensions (consent, rights, enforcement, penalties)
-- [ ] **REG-08**: Regulatory timeline tracks key effective dates, comment periods, and enforcement deadlines for major laws
+- [x] **REG-07**: Regulation cross-reference enables side-by-side comparison of major frameworks on common dimensions (consent, rights, enforcement, penalties)
+- [x] **REG-08**: Regulatory timeline tracks key effective dates, comment periods, and enforcement deadlines for major laws
 
 ### Skill Architecture
 
@@ -46,7 +46,7 @@
 
 ### Research Depth
 
-- [ ] **DEPTH-01**: Quick lookup mode answers common factual questions from static knowledge only
+- [x] **DEPTH-01**: Quick lookup mode answers common factual questions from static knowledge only
 - [ ] **DEPTH-02**: Deep research mode performs multi-source live fetching using navigation guides and synthesizes across organizations
 
 ## v2 Requirements
@@ -97,8 +97,8 @@
 | REG-04 | Phase 2 | Complete |
 | REG-05 | Phase 2 | Complete |
 | REG-06 | Phase 2 | Complete |
-| REG-07 | Phase 2 | Pending |
-| REG-08 | Phase 2 | Pending |
+| REG-07 | Phase 2 | Complete |
+| REG-08 | Phase 2 | Complete |
 | ARCH-01 | Phase 1 | Complete |
 | ARCH-02 | Phase 1 | Complete |
 | ARCH-03 | Phase 1 | Complete |
@@ -107,7 +107,7 @@
 | ARCH-06 | Phase 1 | Complete |
 | ARCH-07 | Phase 1 | Complete |
 | ARCH-08 | Phase 1 | Complete |
-| DEPTH-01 | Phase 2 | Pending |
+| DEPTH-01 | Phase 2 | Complete |
 | DEPTH-02 | Phase 4 | Pending |
 
 **Coverage:**
