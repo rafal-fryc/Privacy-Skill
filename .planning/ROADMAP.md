@@ -77,10 +77,11 @@ Plans:
   1. User asking a deep research question (e.g., "Current state of children's privacy law") gets a synthesized answer drawing from multiple sources via live fetching, with each claim attributed to its source
   2. When web fetching is unavailable or fails for specific sources, the skill falls back to static knowledge and clearly indicates which information is from cached knowledge versus live sources
   3. The skill correctly routes between quick lookup mode (static-only, fast) and deep research mode (multi-source live fetching) based on query complexity
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
+- [ ] 04-01-PLAN.md — Create research-behaviors.md live research instruction file
+- [ ] 04-02-PLAN.md — Update SKILL.md routing with Step 5 (Live Research) and examples
 
 ## Progress
 
@@ -93,4 +94,4 @@ Note: Phase 2 and Phase 3 have no dependency on each other and could theoretical
 | 1. Skill Foundation + FPF Primary Source | 0/2 | Planning complete | - |
 | 2. Regulation Knowledge Base | 0/4 | Planning complete | - |
 | 3. Organization Catalog + Government Sources | 0/4 | Planning complete | - |
-| 4. Deep Research + Validation | 0/1 | Not started | - |
+| 4. Deep Research + Validation | 0/2 | Planning complete | - |
