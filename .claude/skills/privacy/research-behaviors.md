@@ -18,20 +18,7 @@ Static knowledge from reference files (loaded in SKILL.md Steps 2-4) is always t
 
 ## 2. WebFetch Source Compatibility
 
-Before selecting sources for live fetching, consult this verified compatibility matrix. Never attempt WebFetch on blocked sources.
-
-| Source | Status | Best URL Pattern | Notes |
-|--------|--------|------------------|-------|
-| FPF (fpf.org) | ACCESSIBLE | `fpf.org/blog/` and `fpf.org/blog/[slug]/` | Blog index lists recent posts; individual posts return full article text. Do NOT use `fpf.org/issue/` URLs (confirmed 404). |
-| IAPP (iapp.org) | ACCESSIBLE | `iapp.org/resources/article/[slug]/` | Full content on article pages; search results require JS and are not accessible. |
-| EDPB (edpb.europa.eu) | ACCESSIBLE | Pages with `_en` suffix | Full HTML content; document listings include metadata. |
-| ICO (ico.org.uk) | ACCESSIBLE | `ico.org.uk/for-organisations/[topic]/` | Substantial inline content; enforcement register accessible. |
-| CPPA (cppa.ca.gov) | ACCESSIBLE | Direct page URLs | High reliability; server-side rendered; no blocking. |
-| FTC (ftc.gov) | BLOCKED (403) | -- | Server-wide bot detection. Use static knowledge from ftc-nav.md. |
-| EPIC (epic.org) | BLOCKED (Timeout) | -- | Connection timeouts. Use static knowledge from epic-nav.md. |
-| CDT (cdt.org) | BLOCKED (Cloudflare) | -- | Cloudflare bot protection. Use static knowledge from cdt-nav.md. |
-
-When a blocked source is relevant to the query, use static knowledge from its reference and nav guide files. Note the source in the degradation header with its "Last verified" date from the nav guide file.
+Before selecting sources, consult the compatibility matrix in [research-reference.md](research-reference.md) Section 1. It lists which sources are accessible vs. blocked and the best URL patterns for each. Never attempt WebFetch on blocked sources (FTC, EPIC, CDT).
 
 ---
 
@@ -61,27 +48,7 @@ From the sources matched by SKILL.md routing (Steps 2-4), select up to 4 for liv
 
 ## 4. URL Construction
 
-For each selected source, construct a targeted content URL using the URL patterns from that source's nav guide file. The nav guides were built as "site maps" for exactly this purpose.
-
-**Key principle:** NEVER fetch homepages or generic index pages (except FPF blog index). Always construct a specific content URL that is likely to contain information relevant to the query.
-
-**Source-specific URL construction:**
-
-- **FPF**: Fetch `fpf.org/blog/` first (the blog index is confirmed accessible and lists recent post titles). Ask WebFetch to identify posts related to the query topic. If a relevant title is found, fetch that specific blog post URL (`fpf.org/blog/[slug]/`) for full content. This two-step approach (index scan + targeted fetch) counts as FPF within the source cap.
-
-- **IAPP**: Use `iapp.org/resources/article/[slug]/` for known resource articles. For example, `iapp.org/resources/article/us-state-privacy-legislation-tracker/` for state privacy law queries. Consult iapp-nav.md for available article slugs.
-
-- **EDPB**: Use pages with the `_en` suffix. For example, `edpb.europa.eu/our-work-tools/general-guidance/guidelines-recommendations-best-practices_en` for GDPR guidance. Consult edpb-nav.md for section URL patterns.
-
-- **ICO**: Use `ico.org.uk/for-organisations/[topic]/` for guidance pages. For example, `ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/` for children's data queries. Consult ico-nav.md for topic paths.
-
-- **CPPA**: Use direct page URLs from cppa-nav.md. For example, `cppa.ca.gov/regulations/` for CCPA/CPRA regulatory updates.
-
-**URL construction examples by query type:**
-
-- *Children's privacy law developments*: FPF blog index, IAPP state legislation tracker, CPPA regulations page, ICO children's information guidance
-- *GDPR enforcement trends*: FPF blog index, EDPB guidelines/best practices page, ICO enforcement register, IAPP relevant resource article
-- *AI regulation updates*: FPF blog index, EDPB AI-related guidance page, ICO AI and data protection guidance
+For each selected source, construct a targeted content URL. Never fetch homepages or generic index pages (except FPF blog index). Consult [research-reference.md](research-reference.md) Section 2 for source-specific URL patterns and examples by query type. The nav guide files also provide URL patterns for each source.
 
 ---
 
@@ -102,7 +69,7 @@ For each selected source, call WebFetch with a constructed URL and a focused, qu
 
 WebFetch uses a small model to process content, so specific prompts produce substantially better results than vague ones like "summarize this page."
 
-Execute fetches sequentially -- one source at a time. If a fetch fails or times out, note the failure and proceed to the next source. Do not retry failed fetches during the same response.
+Execute all selected fetches in the same turn — call WebFetch for each source simultaneously rather than waiting for one to complete before starting the next. This is safe because all fetches are read-only and independent. If some fail while others succeed, use whatever content was retrieved and note the failures in the degradation handling (see [research-reference.md](research-reference.md) Section 3).
 
 ---
 
@@ -129,33 +96,38 @@ Do not silently override static knowledge with live data or vice versa.
 
 ## 7. Degradation Handling
 
-When sources are unavailable during live research, communicate this with brief, factual notes. Practitioners routinely work with partial information -- degradation notes should be informative, not apologetic.
+When sources are unavailable, consult [research-reference.md](research-reference.md) Section 3 for the degradation tier templates and rules. Key points to remember:
 
-**Tier 1 -- Partial failure (some sources unavailable):**
-
-Place this note before the topic heading:
-
-> **Note:** [Source A] and [Source B] were unavailable during this research -- their coverage is based on built-in knowledge (last verified [date from file]).
-
-**Tier 2 -- Total web failure (all WebFetch attempts fail):**
-
-Place this note before the topic heading:
-
-> **Note:** Live source retrieval was unavailable for this query. This response draws from built-in reference knowledge. For the most current information, consult the sources cited directly, or retry this query later.
-
-**Tier 3 -- Timeout/slow (some sources still loading):**
-
-Provide the answer from available sources and static knowledge. Note which sources timed out and offer to retry:
-
-> **Note:** [Source name] timed out during this research. The response below uses available sources and built-in knowledge. I can retry [source name] if you'd like.
-
-**Degradation note rules:**
-- Only mention failed sources that were selected as relevant to the specific query
-- Known-blocked sources (FTC, EPIC, CDT) that are relevant to the query: include them in the degradation note as "based on built-in knowledge" with their "Last verified" date from their nav guide files
-- Place degradation notes BEFORE the topic heading, not at the bottom of the response
-- Keep notes to one or two sentences -- brief and factual
-- A source that was fetched successfully but contained no relevant content is NOT a degradation -- it simply means the source did not cover the topic
+- **Known-blocked sources (FTC, EPIC, CDT) do not need degradation notes.** Their coverage always comes from static knowledge — the practitioner doesn't need to be told this every time.
+- Only note degradation when a **normally-accessible source** (FPF, IAPP, EDPB, ICO, CPPA) unexpectedly fails.
+- Place degradation notes before the topic heading, not at the bottom.
 
 ---
 
-*This file is loaded for every /privacy query. It governs live web research workflow: source selection, URL construction, WebFetch invocation, content integration with static knowledge, and graceful degradation.*
+## 8. Follow-up Handling
+
+Practitioner conversations are naturally multi-turn. Handle follow-ups based on their relationship to the original query:
+
+**Narrowing follow-up** (e.g., "Tell me about COPPA" then "How does that apply to educational apps?"):
+- Load additional reference files as needed (e.g., ferpa-reference.md for the education context)
+- Reuse already-fetched WebFetch content in the context window -- do not re-fetch the same URLs
+- Carry forward degradation context (if FTC was unavailable on query 1, note this for query 2)
+
+**Topic shift** (e.g., "Tell me about COPPA" then "Now explain GDPR adequacy decisions"):
+- Re-run full routing from SKILL.md Step 1 for the new topic
+- New WebFetch calls are appropriate for the new topic
+- Previous response context is available but should not constrain the new response
+
+**Depth request** (e.g., "Can you go deeper on the enforcement trends you mentioned?"):
+- Allow additional WebFetch calls to new URLs that were not fetched in the original response
+- Do not re-fetch URLs already in the context window
+- Expand the response length ceiling -- the user is explicitly asking for more depth
+
+**General rules for all follow-ups:**
+- Content from prior WebFetch calls remains in the context window -- use it
+- The mandatory disclaimer footer applies to every response, including follow-ups
+- FPF prioritization rules apply to every response, including follow-ups
+
+---
+
+*This file is loaded for every /privacy query. It governs the live research workflow: source selection, WebFetch execution, content integration, and follow-up handling. Reference data (compatibility matrix, URL patterns, degradation tiers) is in research-reference.md.*

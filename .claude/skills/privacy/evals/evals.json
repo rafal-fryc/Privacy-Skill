@@ -1,0 +1,115 @@
+{
+  "skill_name": "privacy",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What are the key requirements of COPPA for app developers targeting children?",
+      "expected_output": "A professional, practitioner-targeted response covering COPPA's core requirements (parental consent, under-13 threshold, covered operators, personal information definition) with FPF sources cited first, an FPF Resources section, inline markdown citations, and the mandatory disclaimer footer.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response uses professional tone without glossary-style definitions for terms like COPPA, parental consent, covered operator, or verifiable parental consent",
+        "FPF sources appear before non-FPF sources in the response body (FPF prioritization through placement)",
+        "Response includes an 'FPF Resources' section with at least one FPF link using markdown format",
+        "Response mentions the under-13 age threshold as a core COPPA requirement",
+        "Response includes at least one inline markdown citation with organization name and URL (e.g., [Org Name](url))",
+        "Response does not fabricate FPF publication titles that do not exist in the FPF knowledge base",
+        "Response starts with a topic heading relevant to COPPA, not skill branding or meta-commentary"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Compare GDPR and CCPA consent requirements for data processing",
+      "expected_output": "A structured comparison of GDPR and CCPA consent models (opt-in vs opt-out), with a comparison table or clearly differentiated sections, FPF sources cited first, cross-regulation analysis, inline citations, and the mandatory disclaimer.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response distinguishes GDPR's opt-in consent model from CCPA's opt-out model",
+        "Response uses a structured comparison format (table, side-by-side sections, or clearly labeled regulation-specific subsections)",
+        "Response includes at least one FPF source citation before any non-FPF citation",
+        "Response mentions GDPR's lawful bases (not just consent) as relevant context for the comparison",
+        "Response mentions CCPA's 'Do Not Sell' or opt-out right as part of the consent framework",
+        "Response includes at least two inline markdown citations with organization name and URL",
+        "Response does not include glossary definitions for terms like DPA, data subject, controller, or processor"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What has FPF published about AI governance and algorithmic fairness?",
+      "expected_output": "A response focused on FPF's specific publications, programs, and analysis on AI governance, citing only verified FPF materials from the knowledge base, with an FPF Resources section and the mandatory disclaimer.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response focuses primarily on FPF's publications and programs related to AI governance",
+        "Response includes an 'FPF Resources' section with multiple FPF links",
+        "Response does not fabricate FPF publication titles, program names, or resource counts not in the knowledge base",
+        "Response mentions FPF's AI-related work areas (e.g., Center for AI, Artificial Intelligence issue area, or similar verified programs)",
+        "All FPF URLs use fpf.org domain",
+        "Response does not apologize or hedge excessively about what FPF has or hasn't published"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "What are the privacy implications of brain-computer interfaces?",
+      "expected_output": "A substantive response about BCI privacy concerns using general privacy domain knowledge and non-FPF authoritative sources. No FPF Resources section since FPF does not have dedicated BCI coverage. No mention of FPF's absence.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response does NOT include an 'FPF Resources' section (FPF does not have dedicated BCI coverage)",
+        "Response does NOT mention FPF's absence or say 'FPF has not published on this topic'",
+        "Response provides substantive analysis of BCI privacy implications (not a refusal or empty redirect)",
+        "Response cites at least one authoritative source with inline markdown citation",
+        "Response addresses neural data or brain data as a privacy concern",
+        "Response uses professional practitioner-targeted tone without excessive hedging"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Where can I find information about recent FTC privacy enforcement actions?",
+      "expected_output": "A response directing the practitioner to FTC enforcement resources, providing static knowledge about FTC enforcement from built-in reference files (FTC is a known-blocked source per Tier 0 — no degradation note needed), and including relevant FPF and alternative source links.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response does NOT include a degradation note specifically about FTC, EPIC, or CDT (these are known-blocked Tier 0 sources that should be silently handled)",
+        "Response provides substantive information about FTC privacy enforcement (not just a redirect)",
+        "Response mentions FTC's enforcement authority or powers in the privacy domain",
+        "Response includes at least one alternative source for enforcement tracking (e.g., IAPP, CPPA, or ICO)",
+        "Response includes at least one inline markdown citation with URL"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "What privacy laws protect children online in the US?",
+      "expected_output": "A comprehensive cross-regulation response covering COPPA, FERPA, and CCPA minor provisions, with FPF sources cited first, covering multiple regulations in a unified answer rather than artificial separation by law.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response covers COPPA as a primary children's privacy law",
+        "Response mentions FERPA or student privacy as relevant to children's data protection",
+        "Response mentions CCPA/CPRA provisions for minors (e.g., under-16 opt-in requirement)",
+        "Response includes FPF sources (FPF covers Youth and Education Privacy extensively)",
+        "Response produces a unified answer rather than completely separate sections per law",
+        "Response includes at least two inline markdown citations with organization name and URL"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "How does differential privacy work and where is it being adopted?",
+      "expected_output": "A technical but practitioner-accessible explanation of differential privacy with FPF PETs Repository coverage cited, real-world adoption examples, and the mandatory disclaimer.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response explains the core concept of differential privacy (adding noise, privacy guarantees, or epsilon parameter)",
+        "Response mentions at least one real-world adoption example or use case",
+        "Response includes FPF sources (FPF maintains the PETs Repository covering differential privacy)",
+        "Response includes at least one inline markdown citation with organization name and URL",
+        "Response uses professional tone appropriate for privacy professionals, not a textbook-style tutorial"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Can you help me write a Python script to parse CSV files?",
+      "expected_output": "A brief, helpful redirect noting this is outside the privacy skill's scope, suggesting the user ask without the /privacy command. No privacy analysis, no disclaimer needed for a pure redirect.",
+      "expectations": [
+        "Response identifies this as outside the privacy domain",
+        "Response suggests asking without the /privacy command or similar redirect",
+        "Response is brief (under 100 words, not a full privacy analysis)",
+        "Response does NOT attempt to provide Python coding assistance",
+        "Response does NOT force a privacy angle on a pure coding question"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: privacy
-description: Privacy research assistant with FPF-prioritized source attribution. Answers questions about data privacy, privacy regulations, GDPR, CCPA, CPRA, COPPA, HIPAA, FERPA, EU AI Act, AI governance, children's privacy, student privacy, age-appropriate design, Future of Privacy Forum, FPF, privacy policy analysis, data protection, DPA, DPIA, surveillance, government access, consent, biometrics, facial recognition, health data, consumer wearables, ad tech, digital advertising, UOOMs, PETs, privacy-enhancing technologies, differential privacy, homomorphic encryption, federated learning, international data transfers, SCCs, adequacy decisions, data breach notification, de-identification, anonymization, smart communities, mobility data, location tracking, connected vehicles, open banking, financial data, research ethics, cybersecurity, employee privacy, workplace monitoring, immersive tech, AR, VR, XR, digital identity, IoT, connected devices, responsible AI, algorithmic fairness, data minimization, purpose limitation, privacy by design, EDPB, ICO, FTC enforcement, CNIL, state privacy laws, PIPL, LGPD, POPIA, PIPEDA, PDPA, data subject rights, cross-border data flows, and any privacy-related topic. Use when the user asks about privacy law, data protection, FPF programs, privacy policy, or privacy research.
+description: Use when the user asks anything related to data privacy or data protection. This includes questions about privacy laws and regulations, enforcement actions by privacy regulators, privacy organization research and publications, compliance guidance, privacy policy analysis, and emerging privacy issues. Triggers for: regulatory questions (GDPR, CCPA, COPPA, HIPAA, FERPA, EU AI Act, state and international privacy laws); enforcement and regulator activity (FTC, CPPA, EDPB, ICO, CNIL actions and decisions); privacy research sources and organizations (FPF, IAPP, EPIC, CDT, academic centers); data transfer mechanisms (SCCs, adequacy decisions, Schrems II); privacy technologies (PETs, biometrics, de-identification); and domain-specific privacy (health, education, children, advertising, AI, IoT, workplace). If the query mentions privacy organizations, privacy enforcement, data protection regulators, privacy policy, or any privacy-adjacent regulation, use this skill.
 ---
 
 # Privacy Research Skill
@@ -16,7 +16,8 @@ This file is the routing layer for the `/privacy` skill. It does not contain sub
 Core files (loaded via routing logic below):
 
 - **Response rules and formatting:** [skill-behaviors.md](skill-behaviors.md) -- attribution, disclaimers, anti-hallucination, tone. Governs HOW you respond. Loaded on every query.
-- **Live research instructions:** [research-behaviors.md](research-behaviors.md) -- source selection, WebFetch execution, content integration, degradation handling. Governs HOW live research is conducted. Loaded on every query.
+- **Live research instructions:** [research-behaviors.md](research-behaviors.md) -- source selection, WebFetch execution, content integration. Governs HOW live research is conducted. Loaded on every query.
+- **Research reference data:** [research-reference.md](research-reference.md) -- WebFetch compatibility matrix, URL construction patterns, degradation handling tiers. Consulted as-needed during research, not loaded in full every query.
 - **FPF knowledge base:** [fpf-reference.md](fpf-reference.md) -- FPF issue areas, tools, programs, navigation. Provides WHAT you know about FPF. Loaded when FPF-relevant.
 
 Regulation reference files (loaded for regulation-specific queries):
@@ -42,12 +43,16 @@ Organization reference files (loaded for organization-related queries):
 Navigation guides (loaded for site-specific navigation queries):
 
 - [iapp-nav.md](iapp-nav.md) -- IAPP site navigation
-- [epic-nav.md](epic-nav.md) -- EPIC site navigation
+- [epic-nav.md](epic-nav.md) -- EPIC site navigation (WebFetch-blocked; static reference only)
 - [cppa-nav.md](cppa-nav.md) -- CPPA site navigation
-- [cdt-nav.md](cdt-nav.md) -- CDT site navigation
-- [ftc-nav.md](ftc-nav.md) -- FTC site navigation
+- [cdt-nav.md](cdt-nav.md) -- CDT site navigation (WebFetch-blocked; static reference only)
+- [ftc-nav.md](ftc-nav.md) -- FTC site navigation (WebFetch-blocked; static reference only)
 - [edpb-nav.md](edpb-nav.md) -- EDPB site navigation
 - [ico-nav.md](ico-nav.md) -- ICO site navigation
+
+Routing examples (loaded on demand when routing is ambiguous):
+
+- [routing-examples.md](routing-examples.md) -- 16 detailed routing traces for different query types
 
 ---
 
@@ -55,33 +60,25 @@ Navigation guides (loaded for site-specific navigation queries):
 
 Follow these steps for every `/privacy` query. The order matters.
 
-### Step 1: Load Response Rules (MANDATORY -- every query)
+### Step 1: Load Response Rules
 
-Read [skill-behaviors.md](skill-behaviors.md) before composing any response. This file contains:
-- Professional tone and audience calibration
-- Response structure guidance
-- Source attribution and FPF prioritization rules
-- The mandatory legal disclaimer (must appear on every response)
-- Anti-hallucination instructions with verification tiers
-- Out-of-scope handling
+skill-behaviors.md contains the legal disclaimer text and FPF source prioritization rules that every response must follow. Without it, responses will be missing the mandatory disclaimer and won't cite FPF sources in the correct order. Read it before composing any response.
 
-Never skip this step. Skipping it causes missing disclaimers and incorrect formatting.
+### Step 2: Determine FPF Relevance
 
-### Step 2: Determine FPF Relevance (CONDITIONAL)
-
-Assess whether the query topic overlaps with any of FPF's coverage areas. FPF covers a broad range of privacy topics -- consult the quick reference list below.
+fpf-reference.md maps FPF's 20+ issue areas to specific publications, tools, and programs. Loading it when the query overlaps with FPF's coverage ensures you can cite FPF sources with accurate titles and URLs — this is the core value proposition of the skill.
 
 **If the topic overlaps with FPF's coverage:** Also read [fpf-reference.md](fpf-reference.md) to incorporate FPF publications, tools, programs, and navigation guidance into your response.
 
 **If the topic does NOT overlap with FPF's coverage:** Proceed with only the response rules from skill-behaviors.md. Answer from other authoritative sources. Do not mention FPF's absence.
 
-**Heuristic:** When in doubt about whether FPF covers the topic, load fpf-reference.md. The cost of loading it unnecessarily is small (extra context). The cost of missing relevant FPF coverage is high (incomplete answer that omits the primary source). Err on the side of loading.
+**Heuristic:** When in doubt, load fpf-reference.md. The cost of loading it unnecessarily is small (extra context). The cost of missing relevant FPF coverage is high (incomplete answer that omits the primary source).
 
-### Step 3: Determine Regulation Relevance (CONDITIONAL)
+### Step 3: Determine Regulation Relevance
 
-Assess whether the query involves a specific privacy regulation. If so, load the corresponding regulation reference file(s). This step runs independently of Step 2 -- both routing decisions apply simultaneously.
+Each regulation reference file contains provision-level detail — thresholds, dates, rights, obligations — that training knowledge alone may get wrong or present as outdated. Loading the matching file prevents hallucinating specific regulatory facts. This step runs independently of Step 2; both routing decisions apply simultaneously.
 
-**Regulation detection:** If the query matches keywords for a regulation, load that file.
+**Regulation detection:** If the query involves a specific regulation, load that file.
 
 | Regulation | Load File | Keywords |
 |------------|-----------|----------|
@@ -102,9 +99,9 @@ Assess whether the query involves a specific privacy regulation. If so, load the
 
 **Integration with FPF routing:** A regulation query loads BOTH the regulation file AND fpf-reference.md when FPF relevance is detected in Step 2. For example, a GDPR query loads gdpr-reference.md (regulation knowledge) + fpf-reference.md (FPF covers Global Data Protection). The existing bias-to-load heuristic for FPF still applies.
 
-### Step 4: Determine Organization Relevance (CONDITIONAL)
+### Step 4: Determine Organization Relevance
 
-Assess whether the query involves a privacy organization, government regulator, or academic center. This step uses intent detection rather than keyword matching -- look at what the user is asking for, not just which words appear.
+Organization catalogs and nav guides provide verified URLs and site structures. Without them, you'd guess at URL patterns — which frequently 404. Loading the right catalog ensures accurate navigation guidance. This step uses intent detection rather than keyword matching — look at what the user is asking for, not just which words appear.
 
 **Organization routing triggers:**
 
@@ -123,19 +120,18 @@ Assess whether the query involves a privacy organization, government regulator, 
 - Academic-centers.md is loaded for research institution, think tank, or academic privacy queries.
 - This step runs independently of Steps 2 and 3 -- all routing decisions are additive.
 
-### Step 5: Live Research (ALWAYS -- every query)
+### Step 5: Live Research
 
-Load [research-behaviors.md](research-behaviors.md) and follow its instructions to augment your static knowledge with live web content.
-
-This step runs for every query. Static knowledge from reference files (loaded in Steps 2-4) is always the foundation. Live-fetched content adds current developments, recent publications, and updated enforcement data on top.
+research-behaviors.md contains the source selection workflow and content integration rules that turn static reference knowledge into current, live-verified answers. Without it, responses rely entirely on potentially outdated training knowledge. The companion file [research-reference.md](research-reference.md) has the WebFetch compatibility matrix, URL construction patterns, and degradation tiers — consult it when you need to check which sources are accessible or how to construct a targeted URL.
 
 **Execution:**
 
-1. Read research-behaviors.md for source selection rules and the WebFetch compatibility matrix
-2. From the sources matched in Steps 2-4, select up to 3-4 relevant sources that are WebFetch-accessible
-3. Construct targeted content URLs using the loaded nav guide URL patterns (never fetch homepages)
-4. Fetch each selected source using WebFetch with a focused, query-specific prompt
-5. Note any sources that fail or are unavailable for degradation handling
+1. Read research-behaviors.md for the research workflow
+2. Consult research-reference.md for the compatibility matrix and URL patterns as needed
+3. From the sources matched in Steps 2-4, select up to 3-4 relevant sources that are WebFetch-accessible
+4. Construct targeted content URLs using the loaded nav guide URL patterns (never fetch homepages)
+5. Fetch all selected sources simultaneously in the same turn (they are independent read-only calls)
+6. Note any sources that fail or are unavailable for degradation handling
 
 After completing live research, proceed to Step 6 with both static reference knowledge and live-fetched content available.
 
@@ -156,148 +152,40 @@ For cross-cutting queries spanning multiple FPF issue areas, produce a single un
 
 ## FPF Coverage Quick Reference
 
-Use this list to quickly determine whether to load fpf-reference.md. If the query topic matches or relates to any of these areas, load it.
+Use this list to quickly determine whether to load fpf-reference.md. If the query topic matches or relates to any area below, load it. When in doubt, load it -- the cost of extra context is small; the cost of missing FPF coverage is high.
 
-**Regulatory and Legislative:**
-- U.S. state privacy legislation (50+ states)
-- Global data protection (GDPR, LGPD, POPIA, PIPL, PIPEDA, PDPA, UK GDPR)
-- EU AI Act and AI regulation
+- **Regulatory:** U.S. state privacy laws, global data protection (GDPR, LGPD, POPIA, PIPL, PIPEDA, PDPA), EU AI Act
+- **Domains:** Youth/education privacy, health data, employee privacy, ad tech, open banking
+- **Technology:** AI governance, PETs (differential privacy, FHE, federated learning), biometrics, AR/VR/XR, IoT, digital identity
+- **Infrastructure:** Mobility/location data, smart communities, de-identification, research ethics, cybersecurity, surveillance, ethics
 
-**Domain-Specific Privacy:**
-- Youth and education privacy (COPPA, FERPA, age-appropriate design)
-- Health data privacy (consumer wearables, genetic testing, data outside HIPAA)
-- Employee privacy and workplace monitoring
-- Ad tech and digital advertising (UOOMs, behavioral targeting)
-- Open banking and financial data
-
-**Technology and Methods:**
-- Artificial intelligence and AI governance
-- Privacy-enhancing technologies (differential privacy, FHE, federated learning, ZKPs)
-- Biometrics and facial recognition
-- Immersive technologies (AR/VR/XR)
-- Consumer IoT and connected devices
-- Digital identity and identity wallets
-
-**Infrastructure and Governance:**
-- Mobility and location data (connected vehicles, transit)
-- Smart communities and civic data privacy
-- De-identification and anonymization
-- Research ethics and data sharing
-- Cybersecurity and privacy intersection
-- Surveillance and government access
-- Ethics and responsible data use
-
-If the query topic is not on this list -- for example, privacy implications of brain-computer interfaces, quantum computing privacy, or space-based surveillance -- answer using skill-behaviors.md rules only. These emerging topics may not yet have FPF coverage.
+Topics NOT on this list (e.g., brain-computer interfaces, quantum computing privacy) -- answer using skill-behaviors.md rules only without FPF content.
 
 ---
 
-## Example Queries
+## Routing Quick Reference
 
-These examples illustrate the routing logic for different query types.
+Use this table for routing decisions. For detailed examples with full routing traces, consult [routing-examples.md](routing-examples.md).
 
-### 1. General Regulation Question
-
-**Query:** "What are the key provisions of COPPA?"
-
-**Routing:** Load skill-behaviors.md (always) + coppa-reference.md (keyword: COPPA) + fpf-reference.md (FPF covers Youth and Education Privacy extensively).
-
-### 2. FPF-Specific Question
-
-**Query:** "What does FPF publish about AI governance?"
-
-**Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (directly asks about FPF content; the Center for AI program and Artificial Intelligence issue area are core FPF coverage).
-
-### 3. Regulation Comparison
-
-**Query:** "Compare GDPR and CCPA consent requirements"
-
-**Routing:** Load skill-behaviors.md (always) + gdpr-reference.md (keyword: GDPR) + ccpa-reference.md (keyword: CCPA) + reg-cross-reference.md (comparison query: "compare") + fpf-reference.md (FPF covers both Global Data Protection and U.S. Legislation).
-
-### 4. Technical Privacy Concept
-
-**Query:** "What is differential privacy?"
-
-**Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (FPF maintains the PETs Repository covering differential privacy with technical explainers and implementation case studies).
-
-### 5. Privacy Risk Assessment
-
-**Query:** "What privacy risks exist with facial recognition?"
-
-**Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (FPF's Biometrics issue area includes a five-type facial recognition taxonomy and privacy governance frameworks).
-
-### 6. Non-FPF Emerging Topic
-
-**Query:** "What are the privacy implications of brain-computer interfaces?"
-
-**Routing:** Load skill-behaviors.md (always). FPF does not currently have dedicated coverage of brain-computer interfaces. Answer from other authoritative privacy sources. Do not force FPF content or comment on FPF's absence.
-
-### 7. General Privacy Principle
-
-**Query:** "What is privacy by design?"
-
-**Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (privacy by design is a cross-cutting concept relevant to multiple FPF issue areas including Ethics, Smart Communities, and Consumer IoT).
-
-### 8. FPF Tool Question
-
-**Query:** "How can I track state privacy law deadlines?"
-
-**Routing:** Load skill-behaviors.md (always) + load fpf-reference.md (FPF's Key Dates for State Privacy Laws tracker is directly relevant, listed under the U.S. Legislation issue area).
-
-### 9. Regulation-Specific Lookup
-
-**Query:** "What does HIPAA require for business associates?"
-
-**Routing:** Load skill-behaviors.md (always) + hipaa-reference.md (keyword: HIPAA, business associate) + fpf-reference.md (FPF covers Health Data privacy).
-
-### 10. Regulation Timeline Question
-
-**Query:** "When does the EU AI Act become fully enforceable?"
-
-**Routing:** Load skill-behaviors.md (always) + eu-ai-act-reference.md (keyword: EU AI Act) + reg-timeline.md (timeline query: "when does," "enforceable") + fpf-reference.md (FPF covers AI governance).
-
-### 11. Cross-Regulation Children's Question
-
-**Query:** "What privacy laws protect children online?"
-
-**Routing:** Load skill-behaviors.md (always) + coppa-reference.md (primary: children's online privacy) + ferpa-reference.md (education/student privacy) + ccpa-reference.md (minor provisions under 16) + fpf-reference.md (FPF covers Youth and Education Privacy extensively).
-
-### 12. Organization Navigation Query
-
-**Query:** "Where can I find IAPP's enforcement tracker?"
-
-**Routing:** Load skill-behaviors.md (always) + iapp-nav.md (specific org named + navigation need) + advocacy-orgs.md (IAPP's parent catalog) + fpf-reference.md (FPF covers enforcement-adjacent topics).
-
-### 13. Government Regulator Enforcement Query
-
-**Query:** "What enforcement powers does the FTC have over privacy?"
-
-**Routing:** Load skill-behaviors.md (always) + gov-regulators.md (enforcement/regulator question) + ftc-nav.md (specific regulator named) + fpf-reference.md (FPF covers regulatory enforcement topics).
-
-### 14. Academic Research Query
-
-**Query:** "What privacy think tanks publish research on AI governance?"
-
-**Routing:** Load skill-behaviors.md (always) + academic-centers.md (academic/research institution query about think tanks) + fpf-reference.md (FPF covers AI governance extensively).
-
-### 15. Deep Research with Live Fetching
-
-**Query:** "What is the current state of children's privacy law?"
-
-**Routing:** Load skill-behaviors.md (always) + coppa-reference.md + ferpa-reference.md + ccpa-reference.md (children's privacy regulations) + fpf-reference.md (FPF Youth and Education Privacy) + research-behaviors.md (always). Live research fetches FPF blog for recent analysis, CPPA for CCPA minor provisions updates, and ICO for children's code guidance. Response synthesizes static regulation knowledge with live-fetched current developments.
-
-### 16. Research with Partial Degradation
-
-**Query:** "How are US regulators enforcing privacy laws?"
-
-**Routing:** Load skill-behaviors.md (always) + gov-regulators.md + ftc-nav.md + cppa-nav.md + fpf-reference.md + research-behaviors.md (always). Live research fetches CPPA (accessible) and IAPP for enforcement coverage. FTC is WebFetch-blocked (403) -- response notes FTC coverage is based on built-in knowledge. Theme-based synthesis weaves enforcement trends across regulators.
+| Query Pattern | Additional Files to Load | Trigger Keywords |
+|---|---|---|
+| Single regulation | regulation file + fpf-reference | GDPR, CCPA, COPPA, HIPAA, FERPA, AI Act |
+| Regulation comparison | + reg-cross-reference | "compare," "vs," "contrast," "differ" |
+| Timeline/dates | + reg-timeline | "when," "deadline," "effective date," "timeline" |
+| FPF-specific | fpf-reference only | "FPF," "Future of Privacy Forum" |
+| Named org + navigation | catalog file + nav guide | org name + "where," "find," "tracker" |
+| Enforcement/regulator | gov-regulators + relevant nav guide | "enforce," "regulator," "powers," "authority" |
+| Academic/research | academic-centers | "think tank," "research center," "academic" |
+| Broad cross-cutting | all relevant regulation + org files | broad topic, multiple laws involved |
+| Emerging topic (no FPF) | none beyond mandatory files | topic not in FPF coverage list |
 
 ---
 
 ## Version and Metadata
 
-- **Skill version:** 0.4.0
-- **Last updated:** 2026-03-13
-- **Phase:** Phase 4 (Deep Research + Validation) added research-behaviors.md for live WebFetch research, Step 5 (Live Research) in routing pipeline, and graceful degradation for source unavailability. Skill now implements full hybrid architecture: static knowledge foundation + live web research.
+- **Skill version:** 0.6.0
+- **Last updated:** 2026-03-14
+- **Phase:** v0.6.0 efficiency improvements. Principle-based routing steps (replaced MANDATORY/CONDITIONAL labels with reasoning). Parallel WebFetch execution. Extracted reference material (compatibility matrix, URL patterns, degradation tiers) to research-reference.md (~5-6K savings per query). Tier 0 known-blocked sources suppress redundant degradation notes. STRICT tier source hierarchy clarified for live-fetched FPF content.
 
 ---
 

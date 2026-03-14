@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I need to understand how GDPR's legitimate interest basis works in practice for our ad tech platform — we're processing behavioral data across 3 EU member states and the DPO wants a memo by Friday",
+    "should_trigger": true
+  },
+  {
+    "query": "What did the CPPA say in their latest enforcement action against that fitness app? I saw something on LinkedIn about it",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you pull together a briefing on how COPPA, FERPA, and state student privacy laws interact for our edtech product that serves K-12 students?",
+    "should_trigger": true
+  },
+  {
+    "query": "What's the current timeline for EU AI Act enforcement deadlines? My compliance team needs to plan resource allocation",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm looking at FPF's work on de-identification standards — do they have any practical frameworks we could reference in our data governance policy?",
+    "should_trigger": true
+  },
+  {
+    "query": "What privacy organizations publish research on facial recognition governance? Need to cite multiple sources in a policy memo",
+    "should_trigger": true
+  },
+  {
+    "query": "How do SCCs work for international data transfers post-Schrems II? Are there any recent adequacy decisions I should know about?",
+    "should_trigger": true
+  },
+  {
+    "query": "What are the privacy implications of connected vehicles collecting location data? Looking for both regulatory requirements and industry best practices",
+    "should_trigger": true
+  },
+  {
+    "query": "Compare the enforcement powers of the FTC, ICO, and CNIL for data protection violations",
+    "should_trigger": true
+  },
+  {
+    "query": "We're building a consumer health app that falls outside HIPAA — what other privacy frameworks should we consider?",
+    "should_trigger": true
+  },
+  {
+    "query": "Help me debug this React component that's not rendering my user profile page correctly — I keep getting a null reference error on line 47",
+    "should_trigger": false
+  },
+  {
+    "query": "What's the best way to implement JWT authentication in my Node.js API? I need refresh token rotation",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you review my Python data pipeline that reads from S3, transforms the CSV, and loads into PostgreSQL?",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I set up HTTPS certificates for my nginx reverse proxy?",
+    "should_trigger": false
+  },
+  {
+    "query": "Write me a blog post about our company's new product launch for the marketing team",
+    "should_trigger": false
+  },
+  {
+    "query": "What are the differences between PostgreSQL and MySQL for our new application?",
+    "should_trigger": false
+  },
+  {
+    "query": "Help me understand the OSI model and how TCP/IP works at each layer",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to create a Kubernetes deployment manifest for our microservices architecture",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you explain how the Federal Reserve's monetary policy affects mortgage rates?",
+    "should_trigger": false
+  },
+  {
+    "query": "Write unit tests for my TypeScript authentication service that validates user credentials against our database",
+    "should_trigger": false
+  }
+]

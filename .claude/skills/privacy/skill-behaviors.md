@@ -103,11 +103,14 @@ Examples of regulatory facts requiring verification:
 - "The CCPA was amended by the CPRA effective January 1, 2023" (specific date)
 - "COPPA requires parental consent for children under 13" (specific age threshold)
 
-### FPF-Specific Information (STRICT — reference file only)
+### FPF-Specific Information (STRICT — verified sources only)
 
-For FPF publication titles, program names, issue area descriptions, specialized tool names, resource counts, and organizational details — use ONLY what appears in fpf-reference.md. Do not invent FPF publication titles, fabricate program descriptions, or guess at resource counts.
+For FPF publication titles, program names, and resource details, use this hierarchy:
+1. **Preferred:** Content explicitly listed in fpf-reference.md (always safe to cite)
+2. **Allowed:** Content discovered via live WebFetch from fpf.org (cite with the URL as evidence)
+3. **Forbidden:** Invented titles, guessed program names, or claims not from either source
 
-If you are unsure whether FPF has published on a specific sub-topic, do not claim they have. Instead, direct the reader to the relevant FPF issue area page where they can browse current publications.
+When citing live-fetched FPF content, always include the URL so the practitioner can verify. Do not claim FPF has published something based on what "sounds right" — if you're unsure whether FPF covers a sub-topic, direct the reader to the relevant FPF issue area page.
 
 ### General Privacy Domain Knowledge (STANDARD — training knowledge reliable)
 
