@@ -1,6 +1,6 @@
 ---
 name: privacy
-description: Use when the user asks anything related to data privacy or data protection. This includes questions about privacy laws and regulations, enforcement actions by privacy regulators, privacy organization research and publications, compliance guidance, privacy policy analysis, and emerging privacy issues. Triggers for: regulatory questions (GDPR, CCPA, COPPA, HIPAA, FERPA, EU AI Act, state and international privacy laws); enforcement and regulator activity (FTC, CPPA, EDPB, ICO, CNIL actions and decisions); privacy research sources and organizations (FPF, IAPP, EPIC, CDT, academic centers); data transfer mechanisms (SCCs, adequacy decisions, Schrems II); privacy technologies (PETs, biometrics, de-identification); and domain-specific privacy (health, education, children, advertising, AI, IoT, workplace). If the query mentions privacy organizations, privacy enforcement, data protection regulators, privacy policy, or any privacy-adjacent regulation, use this skill.
+description: Use when the user asks anything related to data privacy or data protection. This includes questions about privacy laws and regulations, enforcement actions by privacy regulators, privacy organization research and publications, compliance guidance, privacy policy analysis, and emerging privacy issues. Triggers for: regulatory questions (GDPR, CCPA, COPPA, HIPAA, FERPA, EU AI Act, state and international privacy laws); enforcement and regulator activity (FTC, CPPA, EDPB, ICO, CNIL actions and decisions); privacy research sources and organizations (FPF, IAPP, EPIC, CDT, academic centers); data transfer mechanisms (SCCs, adequacy decisions, Schrems II); privacy technologies (PETs, biometrics, de-identification); and domain-specific privacy (health, education, children, advertising, AI, IoT, workplace). If the query mentions privacy organizations, privacy enforcement, data protection regulators, privacy policy, or any privacy-adjacent regulation, use this skill. Also invoke for compliance guidance, vendor risk assessments, policy analysis, regulatory scope questions ("Does X law apply to us?"), and emerging technology privacy research — even when the user doesn't explicitly say "privacy." If the query involves personal data, consent, data governance, or regulatory obligations, this skill should be used.
 ---
 
 # Privacy Research Skill
@@ -59,6 +59,10 @@ Routing examples (loaded on demand when routing is ambiguous):
 ## Query Routing
 
 Follow these steps for every `/privacy` query. The order matters.
+
+### Step 0: Privacy Relevance Check
+
+Before loading any reference files, assess whether the query relates to data privacy, data protection, or a privacy-adjacent topic. If it clearly does not (e.g., coding help, general knowledge, non-privacy legal questions), respond with the brief out-of-scope redirect from skill-behaviors.md Section 6 without loading additional files. This saves context for genuine privacy queries.
 
 ### Step 1: Load Response Rules
 
@@ -183,9 +187,9 @@ Use this table for routing decisions. For detailed examples with full routing tr
 
 ## Version and Metadata
 
-- **Skill version:** 0.6.0
+- **Skill version:** 0.7.0
 - **Last updated:** 2026-03-14
-- **Phase:** v0.6.0 efficiency improvements. Principle-based routing steps (replaced MANDATORY/CONDITIONAL labels with reasoning). Parallel WebFetch execution. Extracted reference material (compatibility matrix, URL patterns, degradation tiers) to research-reference.md (~5-6K savings per query). Tier 0 known-blocked sources suppress redundant degradation notes. STRICT tier source hierarchy clarified for live-fetched FPF content.
+- **Phase:** v0.7.0 accuracy and coverage improvements. Strengthened anti-hallucination rules (sourced penalties, URL evidence, no fabricated counts). Pushy description for better triggering. Step 0 pre-check for out-of-scope efficiency. Expanded evals to 12 (enforcement trends, narrow tech, multi-turn, ambiguous routing). Strengthened existing assertions for URL and date accuracy.
 
 ---
 

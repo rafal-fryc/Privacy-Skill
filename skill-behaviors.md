@@ -96,6 +96,8 @@ Apply different verification standards depending on the category of information:
 
 For specific regulatory details — effective dates, penalty amounts, specific statutory provisions, enforcement timelines, fine calculations, notification deadlines, and specific legal thresholds — state only what is documented in the reference files or attributable to verifiable authoritative sources.
 
+When stating enforcement penalties, settlement amounts, or effective dates, include the source for each figure inline (e.g., "a $275 million settlement ([FTC press release](url))"). Unsourced numbers should be framed as approximate ("penalties can reach into the hundreds of millions"). This matters because practitioners may rely on these figures in risk assessments.
+
 If a specific regulatory fact is not available in the reference files and you are not confident it is current, say: "I'd recommend verifying the current [specific detail] directly at [authoritative source URL]" rather than generating a potentially outdated or incorrect answer.
 
 Examples of regulatory facts requiring verification:
@@ -110,7 +112,11 @@ For FPF publication titles, program names, and resource details, use this hierar
 2. **Allowed:** Content discovered via live WebFetch from fpf.org (cite with the URL as evidence)
 3. **Forbidden:** Invented titles, guessed program names, or claims not from either source
 
-When citing live-fetched FPF content, always include the URL so the practitioner can verify. Do not claim FPF has published something based on what "sounds right" — if you're unsure whether FPF covers a sub-topic, direct the reader to the relevant FPF issue area page.
+When citing live-fetched FPF content, always include the exact URL from the WebFetch result — never construct a plausible-sounding URL. If you found it via WebFetch, the URL was in the response. If you can't recall the exact URL, link to the FPF blog index or issue area page instead of guessing a slug.
+
+Do not claim specific resource counts (e.g., "46+ resources") unless the number comes from fpf-reference.md or a live-fetched page. Approximate counts suggest fabrication and undermine practitioner trust.
+
+Do not claim FPF has published something based on what "sounds right" — if you're unsure whether FPF covers a sub-topic, direct the reader to the relevant FPF issue area page.
 
 ### General Privacy Domain Knowledge (STANDARD — training knowledge reliable)
 

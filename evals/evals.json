@@ -13,7 +13,8 @@
         "Response mentions the under-13 age threshold as a core COPPA requirement",
         "Response includes at least one inline markdown citation with organization name and URL (e.g., [Org Name](url))",
         "Response does not fabricate FPF publication titles that do not exist in the FPF knowledge base",
-        "Response starts with a topic heading relevant to COPPA, not skill branding or meta-commentary"
+        "Response starts with a topic heading relevant to COPPA, not skill branding or meta-commentary",
+        "Specific penalty amounts or settlement figures mentioned include a source citation or are framed as approximate"
       ]
     },
     {
@@ -28,21 +29,23 @@
         "Response mentions GDPR's lawful bases (not just consent) as relevant context for the comparison",
         "Response mentions CCPA's 'Do Not Sell' or opt-out right as part of the consent framework",
         "Response includes at least two inline markdown citations with organization name and URL",
-        "Response does not include glossary definitions for terms like DPA, data subject, controller, or processor"
+        "Response does not include glossary definitions for terms like DPA, data subject, controller, or processor",
+        "Regulatory dates mentioned (e.g., GDPR effective date, CPRA amendments) are accompanied by source attribution or are well-established facts"
       ]
     },
     {
       "id": 3,
       "prompt": "What has FPF published about AI governance and algorithmic fairness?",
-      "expected_output": "A response focused on FPF's specific publications, programs, and analysis on AI governance, citing only verified FPF materials from the knowledge base, with an FPF Resources section and the mandatory disclaimer.",
+      "expected_output": "A response focused on FPF's specific publications, programs, and analysis on AI governance, citing only verified FPF materials from the knowledge base or live-fetched from fpf.org, with an FPF Resources section and the mandatory disclaimer.",
       "expectations": [
         "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
         "Response focuses primarily on FPF's publications and programs related to AI governance",
         "Response includes an 'FPF Resources' section with multiple FPF links",
-        "Response does not fabricate FPF publication titles, program names, or resource counts not in the knowledge base",
+        "Response does not fabricate FPF publication titles, program names, or resource counts not in the knowledge base or live-fetched results",
         "Response mentions FPF's AI-related work areas (e.g., Center for AI, Artificial Intelligence issue area, or similar verified programs)",
         "All FPF URLs use fpf.org domain",
-        "Response does not apologize or hedge excessively about what FPF has or hasn't published"
+        "Response does not apologize or hedge excessively about what FPF has or hasn't published",
+        "FPF blog post URLs cited in the response use the pattern fpf.org/blog/[slug]/ (not generic fpf.org/blog/)"
       ]
     },
     {
@@ -69,7 +72,8 @@
         "Response provides substantive information about FTC privacy enforcement (not just a redirect)",
         "Response mentions FTC's enforcement authority or powers in the privacy domain",
         "Response includes at least one alternative source for enforcement tracking (e.g., IAPP, CPPA, or ICO)",
-        "Response includes at least one inline markdown citation with URL"
+        "Response includes at least one inline markdown citation with URL",
+        "Enforcement actions mentioned include the year or time period they occurred"
       ]
     },
     {
@@ -83,7 +87,8 @@
         "Response mentions CCPA/CPRA provisions for minors (e.g., under-16 opt-in requirement)",
         "Response includes FPF sources (FPF covers Youth and Education Privacy extensively)",
         "Response produces a unified answer rather than completely separate sections per law",
-        "Response includes at least two inline markdown citations with organization name and URL"
+        "Response includes at least two inline markdown citations with organization name and URL",
+        "All FPF URLs in the response point to specific resources (fpf.org/blog/[slug]/ or fpf.org/issue/[area]/), not generic index pages like fpf.org/blog/"
       ]
     },
     {
@@ -109,6 +114,60 @@
         "Response is brief (under 100 words, not a full privacy analysis)",
         "Response does NOT attempt to provide Python coding assistance",
         "Response does NOT force a privacy angle on a pure coding question"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "What are the trends in FTC privacy enforcement from 2022 to 2026?",
+      "expected_output": "A temporal analysis of FTC enforcement trends covering recent years, with specific enforcement actions cited with dates and amounts, sourced from live research and static knowledge. FPF sources cited where relevant.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response covers multiple years or time periods in its analysis (not just a single snapshot)",
+        "Enforcement actions or settlements mentioned include the year they occurred",
+        "Specific dollar amounts cited include a source or are framed as approximate",
+        "Response uses trend language (e.g., 'increasing', 'shift toward', 'emerging pattern') to synthesize across time periods",
+        "Response includes at least two inline markdown citations with organization name and URL",
+        "Response does NOT include a degradation note about FTC (known-blocked Tier 0 source)"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "What companies currently use differential privacy in production, and when did they adopt it?",
+      "expected_output": "A response listing specific companies with adoption dates and use cases, sourced from live research and training knowledge. Claims should be verifiable — no unsourced 'current' adoption claims.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response names at least three companies or organizations using differential privacy",
+        "Adoption claims include a year or time period for each company mentioned",
+        "Response includes at least one inline markdown citation with URL for an adoption claim",
+        "Response includes FPF sources (FPF covers PETs including differential privacy)",
+        "Response does not claim adoption dates or deployment details without a source or qualifying language like 'reported' or 'announced'"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Tell me about COPPA requirements. [FOLLOW-UP]: How does that apply to educational apps specifically?",
+      "expected_output": "A two-part response: first covering COPPA requirements broadly, then narrowing to educational apps (COPPA-FERPA intersection, school context exemptions, student privacy). The follow-up should reference prior context and load additional reference files (FERPA).",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "The follow-up response addresses the educational app context specifically, not just general COPPA",
+        "The follow-up mentions FERPA or the COPPA-FERPA intersection for educational contexts",
+        "The follow-up references or builds on information from the initial COPPA response rather than starting from scratch",
+        "Response includes FPF sources (FPF covers Youth and Education Privacy)",
+        "Response includes at least one inline markdown citation with URL"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "How do privacy regulations address biometric data collection by employers?",
+      "expected_output": "A cross-regulation analysis covering GDPR special categories, CCPA sensitive data, Illinois BIPA, and other state biometric laws, unified into a single practitioner-oriented answer with FPF sources prioritized.",
+      "expectations": [
+        "Response ends with the exact disclaimer: '*Research aid only — not legal advice.*' after a horizontal rule",
+        "Response covers at least two different regulatory frameworks addressing biometric data (e.g., GDPR, CCPA/CPRA, BIPA, state laws)",
+        "Response addresses the employer context specifically, not just general biometric data rules",
+        "Response produces a unified analysis rather than completely separate sections per regulation",
+        "Response includes FPF sources (FPF covers biometrics as a privacy topic)",
+        "Response includes at least two inline markdown citations with organization name and URL",
+        "Response mentions consent or notice requirements for biometric data in at least one jurisdiction"
       ]
     }
   ]
