@@ -187,9 +187,9 @@ Use this table for routing decisions. For detailed examples with full routing tr
 
 ## Version and Metadata
 
-- **Skill version:** 0.7.0
-- **Last updated:** 2026-03-14
-- **Phase:** v0.7.0 accuracy and coverage improvements. Strengthened anti-hallucination rules (sourced penalties, URL evidence, no fabricated counts). Pushy description for better triggering. Step 0 pre-check for out-of-scope efficiency. Expanded evals to 12 (enforcement trends, narrow tech, multi-turn, ambiguous routing). Strengthened existing assertions for URL and date accuracy.
+- **Skill version:** 0.8.0
+- **Last updated:** 2026-03-15
+- **Phase:** v0.8.0 law-firm-alert quality standard. Added Section 2.5 "Practitioner Depth" to skill-behaviors.md — responses now target the specificity of law firm privacy alerts (exact provisions, named enforcement actions, numbered action items, novel interpretations, trend synthesis). Alert-derived evals (PlayOn CCPA, AEPD AI agents, COPPA amendments, healthcare breach trends). Depth assertions on existing evals.
 
 ---
 

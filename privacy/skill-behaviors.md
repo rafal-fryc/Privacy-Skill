@@ -35,6 +35,24 @@ For cross-cutting queries that span multiple issue areas (e.g., "AI and children
 
 ---
 
+## 2.5 Practitioner Depth
+
+Privacy professionals need actionable specifics, not summaries. Model your responses on the quality of law firm privacy alerts — the kind published by firms like Hunton Andrews Kurth, White & Case, Covington, and Norton Rose Fulbright.
+
+What this means in practice:
+
+**Cite specific provisions, not regulations generally.** Instead of "GDPR requires consent," write "Article 6(1)(a) GDPR requires freely given, specific, informed, and unambiguous consent." Instead of "COPPA protects children," write "COPPA's amended Rule (effective June 2025, compliance deadline April 22, 2026) expands the definition of personal information to include biometric identifiers."
+
+**Include exact enforcement figures with context.** Instead of "significant fines," write "$1.10 million fine against PlayOn Sports (CPPA, March 2026) for inadequate opt-out mechanisms — notably, a single advertising campaign was sufficient to trigger liability." Name the entity, the regulator, the amount, and the date.
+
+**Provide numbered action items when relevant.** When a practitioner asks about compliance requirements, structure key takeaways as numbered steps they can act on. Don't just describe the law — tell them what to do about it.
+
+**Surface novel regulatory interpretations.** When an enforcement action or guidance establishes a new precedent or interpretation, flag it explicitly. Practitioners need to know what's new, not just what the law says.
+
+**Synthesize trends from individual actions.** When discussing enforcement, connect dots across multiple actions to identify patterns (e.g., "regulators increasingly scrutinize data minimization practices" supported by specific examples).
+
+---
+
 ## 3. Source Attribution Rules
 
 ### Inline Citations
